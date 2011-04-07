@@ -45,6 +45,13 @@ service AstDumper
         oneway void startFunctionName( ),
         oneway void endFunctionName( ),
 
+        oneway void startFunctionSignature( ),
+            oneway void startFunctionSignatureParameter( ),
+            oneway void endFunctionSignatureParameter( ),
+            oneway void startFunctionSignatureReturnType( ),
+            oneway void endFunctionSignatureReturnType( ),
+        oneway void endFunctionSignature( ),
+
         oneway void startFunctionBody( ),
         oneway void endFunctionBody( ),
     oneway void endFunctionDefinition( ),
