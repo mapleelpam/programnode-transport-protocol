@@ -23,6 +23,11 @@ struct Identifier
     2: string name,
 }
 
+struct LiteralString
+{
+    2: string value,
+}
+
 struct CallExpression
 {
     1: bool is_new = 0,
@@ -36,12 +41,21 @@ service AstDumper
     oneway void startPackage( 1: StringList id ),
     oneway void endPackage( 1: StringList IDs ),
 
+    oneway void startFunctionDefinition( ),
+        oneway void startFunctionName( ),
+        oneway void endFunctionName( ),
+
+        oneway void startFunctionBody( ),
+        oneway void endFunctionBody( ),
+    oneway void endFunctionDefinition( ),
+
     oneway void startExpressionList( ),
         oneway void startCallExpression( 1: CallExpression call ),
             oneway void startAgumentList(),
             oneway void endAgumentList(),
         oneway void endCallExpression(),
         oneway void identifierExpression( 1: Identifier id ),
+        oneway void literalStringExpression( 1: LiteralString str ),
     oneway void endExpressionList( ),
 
     oneway void addImport( 1: StringList packages ),   // Do we need this? using namespace? or what ever suck?
