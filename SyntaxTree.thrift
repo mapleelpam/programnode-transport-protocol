@@ -37,6 +37,10 @@ struct BinaryExpression
 {
     1: string op = "";
 }
+struct UnaryExpression 
+{
+    1: string op = "";
+}
 
 service AstDumper
 {
@@ -74,6 +78,9 @@ service AstDumper
 
         oneway void startBinaryExpression( 1: BinaryExpression op ),
         oneway void endBinaryExpression( ),
+
+        oneway void startUnaryExpression( 1: UnaryExpression op ),
+        oneway void endUnaryExpression( ),
 
         oneway void identifierExpression( 1: Identifier id ),
         oneway void literalStringExpression( 1: Literal str ),
