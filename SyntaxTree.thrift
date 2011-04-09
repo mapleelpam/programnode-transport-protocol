@@ -82,6 +82,12 @@ service AstDumper
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
 
+        oneway void startVariableDeclare(  ),
+        oneway void endVariableDeclare( ),
+
+        oneway void startAssignment(),
+        oneway void endAssignment(),
+
         oneway void identifierExpression( 1: Identifier id ),
         oneway void literalStringExpression( 1: Literal str ),
         oneway void literalNumberExpression( 1: Literal str ),
@@ -95,7 +101,5 @@ service AstDumper
 //       oneway void defineExpression( 1: list<Expression> exprs ),
     oneway void endStmtList(),
 
-    oneway void ping(),
-    oneway void ping2( 1: i32 echo ),
 }
 
