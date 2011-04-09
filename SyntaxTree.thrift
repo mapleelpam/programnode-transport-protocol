@@ -23,7 +23,7 @@ struct Identifier
     2: string name,
 }
 
-struct LiteralString
+struct Literal
 {
     2: string value,
 }
@@ -31,6 +31,11 @@ struct LiteralString
 struct CallExpression
 {
     1: bool is_new = 0,
+}
+
+struct BinaryExpression 
+{
+    1: string op = "";
 }
 
 service AstDumper
@@ -45,24 +50,35 @@ service AstDumper
         oneway void startFunctionName( ),
         oneway void endFunctionName( ),
 
+        oneway void startFunctionCommon( ),
         oneway void startFunctionSignature( ),
-            oneway void startFunctionSignatureParameter( ),
-            oneway void endFunctionSignatureParameter( ),
+            oneway void startFunctionSignatureParameters( ),
+                oneway void startFunctionSignatureParameterMember( ),
+                oneway void endFunctionSignatureParameterMember( ),
+            oneway void endFunctionSignatureParameters( ),
             oneway void startFunctionSignatureReturnType( ),
             oneway void endFunctionSignatureReturnType( ),
         oneway void endFunctionSignature( ),
 
-        oneway void startFunctionBody( ),
-        oneway void endFunctionBody( ),
+        oneway void endFunctionCommon( ),
     oneway void endFunctionDefinition( ),
+
+    oneway void startReturnStatement( ),
+    oneway void endReturnStatement( ),
 
     oneway void startExpressionList( ),
         oneway void startCallExpression( 1: CallExpression call ),
             oneway void startAgumentList(),
             oneway void endAgumentList(),
         oneway void endCallExpression(),
+
+        oneway void startBinaryExpression( 1: BinaryExpression op ),
+        oneway void endBinaryExpression( ),
+
         oneway void identifierExpression( 1: Identifier id ),
-        oneway void literalStringExpression( 1: LiteralString str ),
+        oneway void literalStringExpression( 1: Literal str ),
+        oneway void literalNumberExpression( 1: Literal str ),
+        oneway void literalBooleanExpression( 1: Literal str ),
     oneway void endExpressionList( ),
 
     oneway void addImport( 1: StringList packages ),   // Do we need this? using namespace? or what ever suck?
