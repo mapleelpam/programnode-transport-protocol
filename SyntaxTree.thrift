@@ -70,6 +70,17 @@ service AstDumper
     oneway void startReturnStatement( ),
     oneway void endReturnStatement( ),
 
+    oneway void startIfStatement( ),
+        oneway void startIfStatement_Condition( ),
+        oneway void endIfStatement_Condition( ),
+
+        oneway void startIfStatement_Then( ),
+        oneway void endIfStatement_Then( ),
+
+        oneway void startIfStatement_Else( ),
+        oneway void endtIfStatement_Else( ),
+    oneway void endIfStatement( ),
+
     oneway void startExpressionList( ),
         oneway void startCallExpression( 1: CallExpression call ),
             oneway void startAgumentList(),
@@ -101,5 +112,12 @@ service AstDumper
 //       oneway void defineExpression( 1: list<Expression> exprs ),
     oneway void endStmtList(),
 
+    oneway void startClassDefine(),
+
+        oneway void startClassName(),
+        oneway void endClassName(),
+        oneway void startClassStmt(),
+        oneway void endClassStmt(),
+    oneway void endClassDefine(),
 }
 
