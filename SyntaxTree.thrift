@@ -31,6 +31,15 @@ struct Literal
 struct CallExpression
 {
     1: bool is_new = 0,
+    2: string mode,
+}
+
+struct ClassDefine
+{
+    1: bool has_attr,
+    2: bool has_baseclass,
+    3: bool has_interface,
+    4: bool has_stmt,
 }
 
 struct BinaryExpression 
@@ -81,6 +90,9 @@ service AstDumper
         oneway void endtIfStatement_Else( ),
     oneway void endIfStatement( ),
 
+    oneway void startStmtExpression( ),
+    oneway void endStmtExpression( ),
+
     oneway void startExpressionList( ),
         oneway void startCallExpression( 1: CallExpression call ),
             oneway void startAgumentList(),
@@ -89,6 +101,12 @@ service AstDumper
 
         oneway void startBinaryExpression( 1: BinaryExpression op ),
         oneway void endBinaryExpression( ),
+
+        oneway void startInstanceOfExpression( ),
+        oneway void endInstanceOfExpression( ),
+
+        oneway void startIsOperator( ),
+        oneway void endIsOperator( ),
 
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
@@ -112,10 +130,16 @@ service AstDumper
 //       oneway void defineExpression( 1: list<Expression> exprs ),
     oneway void endStmtList(),
 
-    oneway void startClassDefine(),
+    oneway void startClassDefine( 1: ClassDefine class_define ),
 
         oneway void startClassName(),
         oneway void endClassName(),
+
+        oneway void startClassBase(),
+        oneway void endClassBase(),
+        oneway void startClassInterface(),
+        oneway void endClassInterface(),
+
         oneway void startClassStmt(),
         oneway void endClassStmt(),
     oneway void endClassDefine(),
