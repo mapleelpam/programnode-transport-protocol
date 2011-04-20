@@ -60,6 +60,9 @@ service AstDumper
     oneway void endPackage( 1: StringList IDs ),
 
     oneway void startFunctionDefinition( ),
+        oneway void startFunctionAttribute( ),
+        oneway void endFunctionAttribute( ),
+
         oneway void startFunctionName( ),
         oneway void endFunctionName( ),
 
@@ -143,5 +146,8 @@ service AstDumper
         oneway void startClassStmt(),
         oneway void endClassStmt(),
     oneway void endClassDefine(),
+
+    oneway void startAttributeList(),
+    oneway void endAttributelist(),
 }
 
