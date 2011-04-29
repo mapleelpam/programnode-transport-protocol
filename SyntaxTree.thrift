@@ -61,8 +61,7 @@ service AstDumper
     oneway void endPackage( 1: StringList IDs ),
 
     oneway void startFunctionDefinition( ),
-        oneway void startFunctionAttribute( ),
-        oneway void endFunctionAttribute( ),
+        oneway void functionAttribute( 1: StringList attrs ),
 
         oneway void functionName( 1: string name ),
 
