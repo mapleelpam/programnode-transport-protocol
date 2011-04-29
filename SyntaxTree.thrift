@@ -129,8 +129,6 @@ service AstDumper
     oneway void addImport( 1: StringList packages ),   // Do we need this? using namespace? or what ever suck?
 
     oneway void startStmtList(),
-//       oneway void defineVariables( 1: list<Variable> vars ),
-//       oneway void defineExpression( 1: list<Expression> exprs ),
     oneway void endStmtList(),
 
     oneway void startClassDefine( 1: ClassDefine class_define ),
