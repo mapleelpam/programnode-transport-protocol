@@ -135,8 +135,7 @@ service AstDumper
 
     oneway void startClassDefine( 1: ClassDefine class_define ),
 
-        oneway void startClassName(),
-        oneway void endClassName(),
+        oneway void className( 1: string name ),
 
         oneway void startClassBase(),
         oneway void endClassBase(),
