@@ -21,6 +21,7 @@ struct Identifier
 {
     1: IdentifierType type,
     2: string name,
+    3: string qualifier,
 }
 
 struct Literal
@@ -63,8 +64,7 @@ service AstDumper
         oneway void startFunctionAttribute( ),
         oneway void endFunctionAttribute( ),
 
-        oneway void startFunctionName( ),
-        oneway void endFunctionName( ),
+        oneway void functionName( 1: string name ),
 
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature( ),
