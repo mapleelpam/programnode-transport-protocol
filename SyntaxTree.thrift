@@ -37,10 +37,13 @@ struct CallExpression
 
 struct ClassDefine
 {
-    1: bool has_attr,
-    2: bool has_baseclass,
-    3: bool has_interface,
-    4: bool has_stmt,
+    1:  string name,
+    2: bool has_attr,
+    3: bool has_baseclass,
+    4: bool has_interface,
+    5: bool has_stmt,
+    6: StringList       inherits,
+    7: StringList       interfaces,
 }
 
 struct BinaryExpression 
@@ -68,7 +71,7 @@ service AstDumper
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature( ),
             oneway void startFunctionSignatureParameters( ),
-                oneway void startFunctionSignatureParameterMember( ),
+                oneway void startFunctionSignatureParameterMember( 1: string name, 2: string type ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
             oneway void startFunctionSignatureReturnType( ),
@@ -113,7 +116,7 @@ service AstDumper
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
 
-        oneway void startVariableDeclare(  ),
+        oneway void startVariableDeclare(  1: string name, 2: string type  ),
         oneway void endVariableDeclare( ),
 
         oneway void startAssignment(),
@@ -131,13 +134,6 @@ service AstDumper
     oneway void endStmtList(),
 
     oneway void startClassDefine( 1: ClassDefine class_define ),
-
-        oneway void className( 1: string name ),
-
-        oneway void startClassBase(),
-        oneway void endClassBase(),
-        oneway void startClassInterface(),
-        oneway void endClassInterface(),
 
         oneway void startClassStmt(),
         oneway void endClassStmt(),
