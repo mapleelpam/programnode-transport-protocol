@@ -74,8 +74,7 @@ service AstDumper
                 oneway void startFunctionSignatureParameterMember( 1: string name, 2: string type ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
-            oneway void startFunctionSignatureReturnType( ),
-            oneway void endFunctionSignatureReturnType( ),
+            oneway void functionSignatureReturnType( 1: string name ),
         oneway void endFunctionSignature( ),
 
         oneway void endFunctionCommon( ),
