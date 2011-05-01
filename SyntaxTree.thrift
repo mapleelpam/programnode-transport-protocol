@@ -115,7 +115,7 @@ service AstDumper
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
 
-        oneway void startVariableDeclare(  1: string name, 2: string type  ),
+        oneway void startVariableDeclare(  1: string name, 2: string type, 3: string attributes  ),
         oneway void endVariableDeclare( ),
 
         oneway void startAssignment(),
