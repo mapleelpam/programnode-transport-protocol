@@ -16,6 +16,11 @@ enum IdentifierType
     ATTR_IDENTIFIER,
     IDENTIFIER, 
 }
+enum ObjectType
+{
+    TYPE_CLASS,
+    TYPE_INTERFACE,
+}
 
 struct Identifier
 {
@@ -44,6 +49,7 @@ struct ClassDefine
     5: bool has_stmt,
     6: StringList       inherits,
     7: StringList       interfaces,
+    8:  ObjectType  object_type;
 }
 
 struct BinaryExpression 
@@ -63,7 +69,7 @@ service AstDumper
     oneway void startPackage( 1: StringList id ),
     oneway void endPackage( 1: StringList IDs ),
 
-    oneway void startFunctionDefinition( ),
+    oneway void startFunctionDefinition( 1: bool isAbstract),
         oneway void functionAttribute( 1: StringList attrs ),
 
         oneway void functionName( 1: string name ),
