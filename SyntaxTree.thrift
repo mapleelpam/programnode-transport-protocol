@@ -75,12 +75,12 @@ service AstDumper
         oneway void functionName( 1: string name ),
 
         oneway void startFunctionCommon( ),
-        oneway void startFunctionSignature( ),
+        oneway void startFunctionSignature(  1: string type ),
             oneway void startFunctionSignatureParameters( ),
                 oneway void startFunctionSignatureParameterMember( 1: string name, 2: string type ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
-            oneway void functionSignatureReturnType( 1: string name ),
+//            oneway void functionSignatureReturnType( 1: string name ),
         oneway void endFunctionSignature( ),
 
         oneway void endFunctionCommon( ),
