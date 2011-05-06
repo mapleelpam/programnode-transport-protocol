@@ -40,7 +40,7 @@ struct CallExpression
     2: string mode,
 }
 
-struct ClassDefine
+struct ClassDefinition
 {
     1:  string name,
     2: bool has_attr,
@@ -138,11 +138,11 @@ service AstDumper
     oneway void startStmtList(),
     oneway void endStmtList(),
 
-    oneway void startClassDefine( 1: ClassDefine class_define ),
+    oneway void startClassDefinition( 1: ClassDefinition class_define ),
 
         oneway void startClassStmt(),
         oneway void endClassStmt(),
-    oneway void endClassDefine(),
+    oneway void endClassDefinition(),
 
     oneway void startAttributeList(),
     oneway void endAttributelist(),
