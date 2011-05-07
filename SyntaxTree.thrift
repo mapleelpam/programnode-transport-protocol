@@ -49,7 +49,8 @@ struct ClassDefinition
     5: bool has_stmt,
     6: StringList       inherits,
     7: StringList       interfaces,
-    8:  ObjectType  object_type;
+    8: ObjectType  object_type;
+    9: string   attribute,
 }
 
 struct BinaryExpression 
@@ -77,7 +78,7 @@ service AstDumper
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature(  1: string type ),
             oneway void startFunctionSignatureParameters( ),
-                oneway void startFunctionSignatureParameterMember( 1: string name, 2: string type ),
+                oneway void startFunctionSignatureParameterMember( 1: string name, 2: StringList type ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
 //            oneway void functionSignatureReturnType( 1: string name ),
@@ -121,7 +122,7 @@ service AstDumper
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
 
-        oneway void startVariableDeclare(  1: string name, 2: string type, 3: string attributes  ),
+        oneway void startVariableDeclare(  1: string name, 2: StringList type, 3: string attributes  ),
         oneway void endVariableDeclare( ),
 
         oneway void startAssignment(),
