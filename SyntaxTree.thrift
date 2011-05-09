@@ -106,8 +106,10 @@ service AstDumper
 
     oneway void startExpressionList( ),
         oneway void startCallExpression( 1: CallExpression call ),
-            oneway void startAgumentList(),
-            oneway void endAgumentList(),
+            oneway void startArgumentList(),
+                oneway void startOneArgument(),
+                oneway void endOneArgument(),
+            oneway void endArgumentList(),
         oneway void endCallExpression(),
 
         oneway void startBinaryExpression( 1: BinaryExpression op ),
@@ -147,5 +149,8 @@ service AstDumper
 
     oneway void startAttributeList(),
     oneway void endAttributelist(),
+
+    oneway void startMemberExpression( 1:StringList bases ),
+    oneway void endMemberExpression(),
 }
 
