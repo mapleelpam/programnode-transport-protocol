@@ -152,5 +152,15 @@ service AstDumper
 
     oneway void startMemberExpression(),
     oneway void endMemberExpression(),
-}
 
+    oneway void startForStatement( ),
+    	oneway void startForInit( ),
+    	oneway void endForInit( ),
+    	oneway void startForCondition( ),
+    	oneway void endForCondition( ),
+    	oneway void startForStep( ),
+    	oneway void endForStep( ),
+    	oneway void startForBody( ),
+    	oneway void endForBody( ),
+    oneway void endForStatement( ),
+}
