@@ -150,7 +150,7 @@ service AstDumper
     oneway void startAttributeList(),
     oneway void endAttributelist(),
 
-    oneway void startMemberExpression( 1:StringList bases ),
+    oneway void startMemberExpression(),
     oneway void endMemberExpression(),
 }
 
