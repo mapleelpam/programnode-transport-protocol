@@ -42,7 +42,7 @@ struct CallExpression
 
 struct ClassDefinition
 {
-    1:  string name,
+    1: string name,
     2: bool has_attr,
     3: bool has_baseclass,
     4: bool has_interface,
@@ -90,15 +90,18 @@ service AstDumper
     oneway void startReturnStatement( ),
     oneway void endReturnStatement( ),
 
+	oneway void startExprCondition( ),
+	oneway void endExprCondition( ),
+
     oneway void startIfStatement( ),
-        oneway void startIfStatement_Condition( ),
-        oneway void endIfStatement_Condition( ),
+//        oneway void startIfStatement_Condition( ),
+//        oneway void endIfStatement_Condition( ),
 
-        oneway void startIfStatement_Then( ),
-        oneway void endIfStatement_Then( ),
+//        oneway void startIfStatement_Then( ),
+//        oneway void endIfStatement_Then( ),
 
-        oneway void startIfStatement_Else( ),
-        oneway void endtIfStatement_Else( ),
+//        oneway void startIfStatement_Else( ),
+//        oneway void endtIfStatement_Else( ),
     oneway void endIfStatement( ),
 
     oneway void startStmtExpression( ),
@@ -140,6 +143,8 @@ service AstDumper
 
     oneway void startStmtList(),
     oneway void endStmtList(),
+    oneway void startScope(),
+    oneway void endScope(),
 
     oneway void startClassDefinition( 1: ClassDefinition class_define ),
 
@@ -156,11 +161,16 @@ service AstDumper
     oneway void startForStatement( ),
     	oneway void startForInit( ),
     	oneway void endForInit( ),
-    	oneway void startForCondition( ),
-    	oneway void endForCondition( ),
+//    	oneway void startForCondition( ),
+//    	oneway void endForCondition( ),
     	oneway void startForStep( ),
     	oneway void endForStep( ),
-    	oneway void startForBody( ),
-    	oneway void endForBody( ),
+//    	oneway void startForBody( ),
+//    	oneway void endForBody( ),
     oneway void endForStatement( ),
+
+    oneway void startDoStatement( ),
+    oneway void endDoStatement( ),
+    oneway void startWhileStatement( ),
+    oneway void endWhileStatement( ),
 }
