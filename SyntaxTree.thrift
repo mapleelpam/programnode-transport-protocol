@@ -2,8 +2,6 @@
 namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
-typedef list<string> StringList
-
 enum ExpressionType
 {
     IDENTIFIER,
@@ -47,10 +45,18 @@ struct ClassDefinition
     3: bool has_baseclass,
     4: bool has_interface,
     5: bool has_stmt,
-    6: StringList       inherits,
-    7: StringList       interfaces,
+    6: list<string>       inherits,
+    7: list<string>       interfaces,
     8: ObjectType  object_type;
     9: string   attribute,
+}
+        
+struct VariableDeclare
+{
+	1: string		name, 
+	2: list<string> type, 
+	3: list<string> attributes,
+	4: bool			has_initialize;
 }
 
 struct BinaryExpression 
@@ -67,21 +73,20 @@ service AstDumper
     oneway void startProgram( ),
     oneway void endProgram( ),
 
-    oneway void startPackage( 1: StringList id ),
-    oneway void endPackage( 1: StringList IDs ),
+    oneway void startPackage( 1: list<string> id ),
+    oneway void endPackage( 1: list<string> IDs ),
 
     oneway void startFunctionDefinition( 1: bool isAbstract),
-        oneway void functionAttribute( 1: StringList attrs ),
+        oneway void functionAttribute( 1: list<string> attrs ),
 
         oneway void functionName( 1: string name ),
 
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature(  1: string type ),
             oneway void startFunctionSignatureParameters( ),
-                oneway void startFunctionSignatureParameterMember( 1: string name, 2: StringList type ),
+                oneway void startFunctionSignatureParameterMember( 1: string name, 2: list<string> type ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
-//            oneway void functionSignatureReturnType( 1: string name ),
         oneway void endFunctionSignature( ),
 
         oneway void endFunctionCommon( ),
@@ -94,14 +99,6 @@ service AstDumper
 	oneway void endExprCondition( ),
 
     oneway void startIfStatement( ),
-//        oneway void startIfStatement_Condition( ),
-//        oneway void endIfStatement_Condition( ),
-
-//        oneway void startIfStatement_Then( ),
-//        oneway void endIfStatement_Then( ),
-
-//        oneway void startIfStatement_Else( ),
-//        oneway void endtIfStatement_Else( ),
     oneway void endIfStatement( ),
 
     oneway void startStmtExpression( ),
@@ -127,7 +124,7 @@ service AstDumper
         oneway void startUnaryExpression( 1: UnaryExpression op ),
         oneway void endUnaryExpression( ),
 
-        oneway void startVariableDeclare(  1: string name, 2: StringList type, 3: list<string> attributes  ),
+        oneway void startVariableDeclare(  1: VariableDeclare var_decl  ),
         oneway void endVariableDeclare( ),
 
         oneway void startAssignment(),
@@ -139,7 +136,7 @@ service AstDumper
         oneway void literalBooleanExpression( 1: Literal str ),
     oneway void endExpressionList( ),
 
-    oneway void addImport( 1: StringList packages ),   // Do we need this? using namespace? or what ever suck?
+    oneway void addImport( 1: list<string> packages ),   // Do we need this? using namespace? or what ever suck?
 
     oneway void startStmtList(),
     oneway void endStmtList(),
@@ -161,12 +158,8 @@ service AstDumper
     oneway void startForStatement( ),
     	oneway void startForInit( ),
     	oneway void endForInit( ),
-//    	oneway void startForCondition( ),
-//    	oneway void endForCondition( ),
     	oneway void startForStep( ),
     	oneway void endForStep( ),
-//    	oneway void startForBody( ),
-//    	oneway void endForBody( ),
     oneway void endForStatement( ),
 
     oneway void startDoStatement( ),
