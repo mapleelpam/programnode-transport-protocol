@@ -2,6 +2,9 @@
 namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
+const string  PROTO_VERSION  = "0.0.1"   // human readable version
+const i64     PROTO_COUNTER  = 001   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+
 enum ExpressionType
 {
     IDENTIFIER,
@@ -50,6 +53,12 @@ struct ClassDefinition
     8: ObjectType  object_type;
     9: string   attribute,
 }
+struct MetaData
+{
+    1: string id,
+    2: map<string/*key*/,string/*value*/>   kayvalues,
+    3: list<string>                         values,
+}
         
 struct VariableDeclare
 {
@@ -70,7 +79,7 @@ struct UnaryExpression
 
 service AstDumper
 {
-    oneway void startProgram( ),
+    oneway void startProgram( 1: string version = PROTO_VERSION, 2: i64 counter = PROTO_COUNTER),
     oneway void endProgram( ),
 
     oneway void startPackage( 1: list<string> id ),
@@ -166,4 +175,6 @@ service AstDumper
     oneway void endDoStatement( ),
     oneway void startWhileStatement( ),
     oneway void endWhileStatement( ),
+
+    oneway void defineMetaData( 1: MetaData metadata ),
 }
