@@ -110,7 +110,7 @@ service AstDumper
     oneway void startFunctionDefinition( 1: bool isAbstract),
         oneway void functionAttribute( 1: list<string> attrs ),
 
-        oneway void functionName( 1: string name, 2: FunctionType func_type = TF_NORMAL ),
+        oneway void functionName( 1: string name, 2: FunctionType func_type),
 
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature(  1: string type ),
