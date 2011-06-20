@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 002   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 003   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum ExpressionType
 {
@@ -73,7 +73,7 @@ struct ClassDefinition
     6: list<string>       inherits,
     7: list<string>       interfaces,
     8: ObjectType  object_type;
-    9: string   attribute,
+    9: list<string>   attributes,
 }
 struct MetaData
 {
@@ -180,8 +180,8 @@ service AstDumper
         oneway void endClassStmt(),
     oneway void endClassDefinition(),
 
-    oneway void startAttributeList(),
-    oneway void endAttributelist(),
+//    oneway void startClassAttributeList(),
+//    oneway void endClassAttributelist(),
 
     oneway void startMemberExpression(),
     oneway void endMemberExpression(),
