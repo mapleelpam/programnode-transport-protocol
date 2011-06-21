@@ -115,7 +115,8 @@ service AstDumper
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature(  1: string type ),
             oneway void startFunctionSignatureParameters( ),
-                oneway void startFunctionSignatureParameterMember( 1: string name, 2: list<string> type ),
+                oneway void startFunctionSignatureParameterMember( 
+                    1: string name, 2: list<string> type, 3: bool has_init, 4: string init = "" ),
                 oneway void endFunctionSignatureParameterMember( ),
             oneway void endFunctionSignatureParameters( ),
         oneway void endFunctionSignature( ),
