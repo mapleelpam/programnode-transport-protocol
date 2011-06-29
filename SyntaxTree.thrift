@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 004   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 005   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum ExpressionType
 {
@@ -168,6 +168,7 @@ service AstDumper
         oneway void literalStringExpression( 1: Literal str ),
         oneway void literalNumberExpression( 1: Literal str ),
         oneway void literalBooleanExpression( 1: Literal str ),
+        oneway void literalNull( ),
     oneway void endExpressionList( ),
 
     oneway void addImport( 1: list<string> packages ),   // Do we need this? using namespace? or what ever suck?
