@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 005   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 006   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum ExpressionType
 {
@@ -61,6 +61,7 @@ struct CallExpression
 {
     1: bool is_new = 0,
     2: string mode,
+	3: list<string> callee,
 }
 
 struct ClassDefinition
