@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 008   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 009   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum ExpressionType
 {
@@ -43,6 +43,11 @@ enum FunctionType
 	TF_NORMAL,
 	TF_GETTER,
 	TF_SETTER,
+}
+enum IncrementType
+{
+    TYPE_POSTFIX,
+    TYPE_PREFIX,
 }
 
 struct Identifier
@@ -149,6 +154,9 @@ service AstDumper
 
         oneway void startBinaryExpression( 1: BinaryExpression op ),
         oneway void endBinaryExpression( ),
+
+        oneway void startIncrementExpression( 1: IncrementType type, 2: string token ),
+        oneway void endIncrementExpression( ),
 
         oneway void startInstanceOfExpression( ),
         oneway void endInstanceOfExpression( ),
