@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 009   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 010   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum ExpressionType
 {
@@ -135,11 +135,14 @@ service AstDumper
     oneway void startReturnStatement( ),
     oneway void endReturnStatement( ),
 
-	oneway void startExprCondition( ),
-	oneway void endExprCondition( ),
+//	oneway void startExprCondition( ),
+//	oneway void endExprCondition( ),
 
     oneway void startIfStatement( ),
     oneway void endIfStatement( ),
+
+    oneway void startConditionExpression( ),
+    oneway void endConditionExpression( ),
 
     oneway void startStmtExpression( ),
     oneway void endStmtExpression( ),
@@ -217,4 +220,6 @@ service AstDumper
     oneway void endWhileStatement( ),
 
     oneway void defineMetaData( 1: MetaData metadata ),
+
+    oneway void empty( ),
 }
