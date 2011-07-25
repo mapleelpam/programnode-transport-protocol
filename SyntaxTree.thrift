@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 013   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 015   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum IdentifierType
 {
@@ -117,9 +117,9 @@ service AstDumper
         oneway void startFunctionCommon( ),
         oneway void startFunctionSignature(  1: string type ),
             oneway void startFunctionSignatureParameters( ),
-                oneway void startFunctionSignatureParameterMember( 
+                oneway void functionParameter( 
                     1: string name, 2: list<string> type, 3: bool has_init, 4: string init = "" ),
-                oneway void endFunctionSignatureParameterMember( ),
+                oneway void functionParameterRest( 1: string name ),
             oneway void endFunctionSignatureParameters( ),
         oneway void endFunctionSignature( ),
 
@@ -128,9 +128,6 @@ service AstDumper
 
     oneway void startReturnStatement( ),
     oneway void endReturnStatement( ),
-
-//	oneway void startExprCondition( ),
-//	oneway void endExprCondition( ),
 
     oneway void startIfStatement( ),
     oneway void endIfStatement( ),
@@ -177,6 +174,8 @@ service AstDumper
         oneway void endGetExpression(),
 
         oneway void superExpression( ),
+        oneway void startSuperInit( ),
+        oneway void endSuperInit( ),
         oneway void identifierExpression( 1: Identifier id ),
         oneway void literalStringExpression( 1: Literal str ),
         oneway void literalNumberExpression( 1: Literal str ),
