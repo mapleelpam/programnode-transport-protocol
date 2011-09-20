@@ -19,7 +19,7 @@ namespace java tw.maple.generated
 namespace cpp tw.maple.generated
 
 const string  PROTO_VERSION  = "0.0.1"   // human readable version
-const i64     PROTO_COUNTER  = 020   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
+const i64     PROTO_COUNTER  = 021   // pls add this counter when every time you release/push, and reset this counter when you add PROTO_VERsION
 
 enum IdentifierType
 {
@@ -49,11 +49,6 @@ struct Identifier
     1: IdentifierType type,
     2: string name,
     3: string qualifier,
-}
-
-struct Literal
-{
-    2: string value,
 }
 
 struct CallExpression
@@ -178,9 +173,10 @@ service AstDumper
         oneway void endSuperInit( ),
         oneway void identifierExpression( 1: Identifier id ),
         oneway void attributeIdentifierExpression( 1: Identifier id ),
-        oneway void literalStringExpression( 1: Literal str ),
-        oneway void literalNumberExpression( 1: Literal str ),
-        oneway void literalBooleanExpression( 1: Literal str ),
+        oneway void literalXMLExpression( 1: string str ),
+        oneway void literalStringExpression( 1: string str ),
+        oneway void literalNumberExpression( 1: string str ),
+        oneway void literalBooleanExpression( 1: string str ),
         oneway void literalNull( ),
 
         oneway void thisExpression( ),
